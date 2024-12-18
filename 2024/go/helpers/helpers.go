@@ -1,5 +1,24 @@
 package helpers
 
+import(
+  "os"
+  "fmt"
+  "log"
+)
+
+func CheckFile(file *os.File, err error){
+    if err != nil {
+      fmt.Println("No file was given as input.")
+      log.Fatal(err)
+    }
+}
+
+func RemoveIntIdx(s []int, idx int) []int{
+  ret := make([]int, 0)
+  ret = append(ret, s[:idx]...)
+  return append(ret, s[idx+1:]...)
+}
+
 func partition(arr []int, low, high int) ([]int, int){
   pivot := arr[high]
   i := low

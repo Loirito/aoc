@@ -2,7 +2,6 @@ package main
 
 import (
   "fmt"
-  "log"
   "os"
   "bufio"
   "strings"
@@ -12,13 +11,12 @@ import (
 
 
 func main() {
+
   file, err := os.Open(os.Args[1])
-  if err != nil {
-    log.Fatal(err)
-  }
+  helpers.CheckFile(file, err)
+  scanner := bufio.NewScanner(file)
   defer file.Close()
 
-  scanner := bufio.NewScanner(file)
   var left []int
   var right []int
 
